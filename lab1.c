@@ -9,8 +9,8 @@ int main()
   LList *lp = llAlloc();  //Creates an empty list
 
   printf("Enter a filename: ");
-  scanf("%s", buf);
-
+  //scanf("%s", buf);
+  fgets(buf,100,stdin);
   printf("the string was: %s\n", buf);
 }
 
@@ -22,3 +22,11 @@ int main()
   llPrint(lp, "Contents after inputs");
 
    llMakeEmpty(lp); //deletes content of the lists */
+
+
+//FIle Input output related items, Information gathered from Utah.edu
+
+/*FILE *in_file = fopen("Name-of-file", "r"); //only reads
+FILE *out_file = fopen("Name-of-file", "w"); //only writes
+
+*/
