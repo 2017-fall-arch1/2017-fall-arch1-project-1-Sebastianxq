@@ -13,17 +13,11 @@ lab1: dllist.o lab1.o
 llDemo: llist.o llDemo.o
 	cc -o $@ $^
 
-#dllDemo:dllist.o lab1.o
-#	cc -o $@ $^
-
 dllist.o: dllist.c dllist.h
 	cc -c $(CLFAGS) dllist.c
 
 llist.o: llist.c llist.h
 	cc -c $(CFLAGS) llist.c
-
-#dllDemo.o: dllDemo.c dllist.h
-#	cc -c $(CFLAGS) dllDemo.c
 
 llDemo.o: llDemo.c llist.h
 	cc -c $(CFLAGS) llDemo.c
