@@ -1,4 +1,5 @@
 all: llDemo
+all: lab1
 
 CFLAGS=-g -O3
 
@@ -6,14 +7,23 @@ CFLAGS=-g -O3
 #   $@ is the production's target
 #   $^ are the production's prerequisites
 
-lab1: llist.o lab1.o
+lab1: dllist.o lab1.o
 	cc -o $@ $^
 
 llDemo: llist.o llDemo.o
 	cc -o $@ $^
 
+#dllDemo:dllist.o lab1.o
+#	cc -o $@ $^
+
+dllist.o: dllist.c dllist.h
+	cc -c $(CLFAGS) dllist.c
+
 llist.o: llist.c llist.h
 	cc -c $(CFLAGS) llist.c
+
+#dllDemo.o: dllDemo.c dllist.h
+#	cc -c $(CFLAGS) dllDemo.c
 
 llDemo.o: llDemo.c llist.h
 	cc -c $(CFLAGS) llDemo.c
@@ -25,5 +35,5 @@ demo: llDemo
 	(echo first; echo "second line"; echo "third and last") | ./llDemo
 
 lab: lab1
-	#(echo "test") | ./lab1
+	#(echo "test") | ./lab1 the echo just acts as a simple input
 	./lab1
