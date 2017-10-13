@@ -22,21 +22,27 @@ int main()
   char buf[100];    //buffer to read in input byte by btye
   dLList *lp = llAlloc();  //Creates an empty list
 
-  printf("Enter a filename: ");
+  printf("Choose one of the following options\n"
+    " 1.)Print list\n"
+    " 2.)Input list and then print\n"
+    " 3.)type stop to exit\n");
+  //FILE INSERT BASICS
+  /*printf("Enter a filename: ");
   //scanf("%s", buf);
   fgets(buf,100,stdin);
-  printf("the string was: %s\n", buf);
+  printf("the string was: %s\n", buf); */
 
   llPrint(lp, "Contents before input:");
 
-  while(gets_n(buf,100)){
+  printf("Input employee names, type ""stop""  to finish inputting names\n");
+  
+  while(gets_n(buf,100)&& strcmp(buf,"stop") ){
     dllPut(lp, buf);
   }
 
   llPrint(lp, "List contents, after creating a list:");
 
   dllFree(lp);
-  while (strcmp(buf,"stop"));
 
   printf("Thanks for playing.");
 
