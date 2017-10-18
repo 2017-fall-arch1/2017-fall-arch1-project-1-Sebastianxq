@@ -1,18 +1,11 @@
-# arch1-linked-list-demo
+# arch1-lab1
 
 This directory contains:
 * code that implements a linked list of strings 
 * a demo program that uses it
+* my version of a doubly linked list
 
-The demo program reads lines from stdin.
-Each line is appended onto a linked list.
-After end-of-file is read, the lines are printed out.
-
-This demo contains the following files:
- llist.h: header file of llist structure & "public" interface functions
- llist.c: implementation of linked list
- listDemo.c: a demonstration program that uses the linked list
- 
+My lab ask the user to choose between a series of options to build their doubly linked lists
 
 To compile:
 ~~~
@@ -21,7 +14,7 @@ $ make
 
 To test it, try:
 ~~~
-$ make demo
+$ make lab
 ~~~
 
 To delete binaries:
