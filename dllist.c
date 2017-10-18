@@ -134,11 +134,10 @@ void deleteItem(dLList *lp, char *msg)
      lp->last->prev->next = 0;
 	 lp->last->prev = lp->last;
    }
-/* else{
-    lp->prev->next = next;
-    lp->next->prev = prev;
-    //and free
-    } */
+   else{
+    current->prev->next = current->next;
+    current->next->prev = current->prev;
+    } 
     free(current->str);
     free(current);
 }
