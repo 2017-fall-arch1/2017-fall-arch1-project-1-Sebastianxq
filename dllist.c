@@ -1,4 +1,5 @@
 #include <stdio.h>   /*puts */
+#include <string.h>   /*for strcmps */
 #include <stdlib.h>  /*for allocation */
 #include <assert.h>  /* for asserts */
 #include "dllist.h"  /* extendds dllist.h  properties*/
@@ -113,7 +114,32 @@ void dllFirst(dLList *lp, char *s)
   //doCheck(lp);
 } 
 void deleteItem(dLList *lp, char *msg)
-{  
+{
+  
+  dLLItem *current = lp->first, *next;
+  doCheck(lp);
+   while (strcmp(current->str,msg))
+    {
+      current = current->next;
+    }
+   printf("current %s", current->str);
+   if(lp->first){
+    lp->first = lp->first->next;
+    lp->first->prev = 0;
+    } 
+   /* else if (lp->last){
+    lp->last = lp->last->prev;
+    lp->last->next = 0;
+      /* alternate writign  lp->prev->next = 0;
+	 lp->prev = last; */
+     } */
+/* else{
+    lp->prev->next = next;
+    lp->next->prev = prev;
+    //and free
+    } */
+    free(current->str);
+    free(current);
 }
 
 void llPrint(dLList *lp, char *msg)
