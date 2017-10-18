@@ -39,6 +39,7 @@ void dllMakeEmpty(dLList *lp)
   doCheck(lp);
 }
 
+/* inserts an item at the end of the list */
 void dllPut(dLList *lp, char *s)
 {
   int length;
@@ -59,10 +60,12 @@ void dllPut(dLList *lp, char *s)
     i = (dLLItem *)malloc(sizeof(dLLItem));
   i->str = scopy;
   i->next = 0;
+  i->prev = 0; //added 17
 
   /*puts at the end of the list */
   if (lp->last){
-    lp->last->next = i;
+    lp->last->next = i; /*last points to new node */
+    i->prev = lp->last; /*new node's prev is now last */
   } else{
     lp->first = i; /* if list is empty */
   }
@@ -72,13 +75,66 @@ void dllPut(dLList *lp, char *s)
   doCheck(lp);
 }
 
+void dllFirst(dLList *lp, char *s)
+{
+  int length;
+  char *scopy;
+  dLLItem *i;
+
+  //doCheck(lp);
+  /* creates a copy of the string "s" */
+  for (length = 0; s[length] ; length++);
+
+  scopy = (char *)malloc(length+1);
+
+  for (length=0; s[length];length++)
+    scopy[length] = s[length];
+  scopy[length] = 0;
+
+    /* instantiates the list item i  */
+    i = (dLLItem *)malloc(sizeof(dLLItem));
+  i->str = scopy;
+  i->next = 0;
+  i->prev = 0;
+
+  /*puts at the beginning of the list */
+  if (lp->first){
+    //prev node points to the last
+    lp->first->prev=i;
+    lp->first->next = NULL;
+    i->next = lp->first;
+  } else{
+    //item is first if list is empty
+    lp->first = i; /* if list is empty */
+  }
+
+  /*new item is now the first on the list */
+  lp->first = i;
+  //doCheck(lp);
+} 
+void deleteItem(dLList *lp, char *msg)
+{  
+}
+
 void llPrint(dLList *lp, char *msg)
 {
   dLLItem *ip;
   int count = 1;
-  doCheck(lp);
+  // doCheck(lp); I TOOK THIS OUT
   puts(msg ? msg :"List content:");
   for (ip = lp->first; ip; ip = ip->next){
+    printf(" %d: <%s>\n", count, ip->str);
+    count++;
+  }
+}
+
+void reversePrint(dLList *lp, char *msg)
+{
+  dLLItem *ip;
+  int count = 1;
+  //doCheck(lp); I TOOK THIS OUT
+  puts(msg ? msg :"List content:");
+  for (ip = lp->last; ip; ip = ip->prev){
     printf(" %d: <%s>\n", count, ip->str);
     count++;
   }

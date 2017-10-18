@@ -24,8 +24,8 @@ void dllFree(dLList *lp);
 /*puts a copy of str at the end of the list */
 void dllPut(dLList *lp, char *s);
 
-/*puts a copy of the str at the beginning of the list!
-void dllPutFirst(dLList *lp, char *s);
+/*put a copy at the beginning of the list */
+void dllFirst(dLList *lp, char *s);
 
 /* Will work on later!!!*/
 /* puts a copy of str at the user specified location */
@@ -35,6 +35,10 @@ void dllPutFirst(dLList *lp, char *s);
 void dllMakeEmpty(dLList *lp);
 
 void llPrint(dLList *lp, char *msg);
+
+/* prints the list from last to first */
+void reversePrint(dLList *lp, char *msg);
+
 
 /*prints list in reverse, starting from last element
   dllPrintReverse(dLList *lp, char *msg); */
