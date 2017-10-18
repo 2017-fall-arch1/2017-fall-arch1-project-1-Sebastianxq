@@ -22,12 +22,15 @@ llist.o: llist.c llist.h
 llDemo.o: llDemo.c llist.h
 	cc -c $(CFLAGS) llDemo.c
 
+lab1.o: lab1.c dllist.h
+	cc -c $(CFLAGS) lab1.c
+
 clean:
-	rm -f *.o llDemo
+	rm -f *.o
 
 demo: llDemo
 	(echo first; echo "second line"; echo "third and last") | ./llDemo
 
+#(eccho "test") | ./lab1 the echo is an input
 lab: lab1
-	#(echo "test") | ./lab1 the echo just acts as a simple input
-	./lab1
+	 ./lab1
