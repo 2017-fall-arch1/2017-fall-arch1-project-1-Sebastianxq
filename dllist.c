@@ -118,21 +118,22 @@ void deleteItem(dLList *lp, char *msg)
   
   dLLItem *current = lp->first, *next;
   doCheck(lp);
-   while (strcmp(current->str,msg))
+  while (strcmp(current->str,msg))
     {
       current = current->next;
     }
-   printf("current %s", current->str);
-   if(lp->first){
+   printf("current is: %s\n", current->str);
+   if(current==lp->first){
     lp->first = lp->first->next;
     lp->first->prev = 0;
     } 
-   /* else if (lp->last){
-    lp->last = lp->last->prev;
-    lp->last->next = 0;
-      /* alternate writign  lp->prev->next = 0;
-	 lp->prev = last; */
-    //}
+   //else if (strcmp(current->str,lp->last->str)){
+   else if (current==lp->last){
+     //lp->last = lp->last->prev;
+    //lp->last->next = 0;
+     lp->last->prev->next = 0;
+	 lp->last->prev = lp->last;
+   }
 /* else{
     lp->prev->next = next;
     lp->next->prev = prev;
