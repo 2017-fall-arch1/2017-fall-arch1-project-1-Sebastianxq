@@ -132,7 +132,7 @@ void deleteItem(dLList *lp, char *msg)
     lp->last->next = 0;
       /* alternate writign  lp->prev->next = 0;
 	 lp->prev = last; */
-     } */
+    //}
 /* else{
     lp->prev->next = next;
     lp->next->prev = prev;
